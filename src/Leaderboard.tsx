@@ -1,10 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 
 const API_BASE = 'http://192.168.167.171:2086/api';
 
 function Leaderboard() {
-  const [leaderboard, setLeaderboard] = useState([]);
+  const [leaderboard, setLeaderboard] = useState([] as string[]);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {

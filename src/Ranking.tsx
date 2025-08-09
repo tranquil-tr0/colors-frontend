@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 const API_BASE = 'http://192.168.167.171:2086/api';
 
-function ColorButton({ color, onClick }) {
+type ColorButtonProps = {
+  color: string;
+  onClick: () => void;
+};
+
+function ColorButton({ color, onClick }: ColorButtonProps) {
   return (
     <button
       onClick={onClick}
@@ -23,8 +28,13 @@ function ColorButton({ color, onClick }) {
   );
 }
 
+type ColorsType = {
+  color1: string;
+  color2: string;
+};
+
 function Ranking() {
-  const [colors, setColors] = useState(null);
+  const [colors, setColors] = useState(null as ColorsType | null);
   const [loading, setLoading] = useState(false);
 
   const fetchColors = async () => {
@@ -35,7 +45,7 @@ function Ranking() {
     setLoading(false);
   };
 
-  const sendResult = async (choice) => {
+  const sendResult = async (choice: string) => {
     if (!colors) return;
     const body = `${colors.color1} ${colors.color2} ${choice}`;
     await fetch(`${API_BASE}/say-result`, {
