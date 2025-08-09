@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  background: #222;
+  color: #fff;
+}
+
+button {
+  outline: none;
+}
