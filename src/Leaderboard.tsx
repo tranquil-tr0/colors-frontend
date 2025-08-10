@@ -16,7 +16,7 @@ function Leaderboard() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#222', padding: '2rem 0', boxSizing: 'border-box' }}>
-      <h1 style={{ color: '#fff', textAlign: 'center' }}>Leaderboard</h1>
+      <h1 style={{ color: '#fff', textAlign: 'center' }}></h1>
       <div style={{ width: '100%' }}>
         {leaderboard.map((color) => (
           <div key={color} style={{
@@ -32,7 +32,6 @@ function Leaderboard() {
             borderBottom: '1px solid #333',
             boxSizing: 'border-box',
           }}>
-            #{color}
           </div>
         ))}
       </div>

@@ -13,17 +13,22 @@ function ColorButton({ color, onClick }: ColorButtonProps) {
       onClick={onClick}
       style={{
         background: `#${color}`,
-        color: '#fff',
-        fontSize: '2rem',
         width: '120px',
         height: '120px',
         margin: '1rem',
-        border: '2px solid #333',
-        borderRadius: '12px',
+        border: '4px solid #333',
+        borderRadius: '50%',
         cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 0 12px #333',
       }}
     >
-      #{color}
+      {/* No text, just color circle */}
+      <svg width="48" height="48">
+        <circle cx="24" cy="24" r="22" fill={`#${color}`} stroke="#333" strokeWidth="2" />
+      </svg>
     </button>
   );
 }
@@ -60,14 +65,32 @@ function Ranking() {
   }, []);
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: 'sans-serif', marginTop: '2rem' }}>
-      <h1>Choose Your Favorite Color</h1>
+    <div style={{ textAlign: 'center', fontFamily: 'sans-serif', marginTop: '2rem', padding: '1rem' }}>
+      {/* No text, only shapes/colors/icons */}
       {loading || !colors ? (
-        <p>Loading...</p>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+          <svg width="48" height="48" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="20" fill="#eee" stroke="#ccc" strokeWidth="4" />
+            <circle cx="24" cy="24" r="8" fill="#ccc" stroke="#eee" strokeWidth="2" />
+          </svg>
+        </div>
       ) : (
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '2rem',
+            maxWidth: '100%',
+          }}
+        >
           <ColorButton color={colors.color1} onClick={() => sendResult('1')} />
-          <span style={{ fontSize: '2rem', margin: '2rem' }}>vs</span>
+          {/* Icon for VS, no text */}
+          <svg width="48" height="48" viewBox="0 0 48 48" style={{ margin: '0 2rem' }}>
+            <rect x="20" y="10" width="8" height="28" rx="4" fill="#333" />
+            <circle cx="24" cy="24" r="6" fill="#fff" stroke="#333" strokeWidth="2" />
+          </svg>
           <ColorButton color={colors.color2} onClick={() => sendResult('2')} />
         </div>
       )}

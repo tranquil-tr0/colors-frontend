@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App.tsx';
 import Selector from './Selector.tsx';
 import Leaderboard from './Leaderboard.tsx';
 import Ranking from './Ranking.tsx';
@@ -14,7 +13,6 @@ root.render(
       <Route path="/" element={<Selector />} />
       <Route path="/ranking" element={<Ranking />} />
       <Route path="/leaderboard" element={<Leaderboard />} />
-      <Route path="/both" element={<App />} />
     </Routes>
   </BrowserRouter>
 );
