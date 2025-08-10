@@ -6,12 +6,19 @@ function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([] as string[]);
 
   useEffect(() => {
+  let intervalId: number;
     const fetchLeaderboard = async () => {
-      const res = await fetch(`${API_BASE}/send-leaderboard`);
-      const data = await res.json();
-      setLeaderboard(data.leaderboard || []);
+      try {
+        const res = await fetch(`${API_BASE}/send-leaderboard`);
+        const data = await res.json();
+        setLeaderboard(data.leaderboard || []);
+      } catch (err) {
+        // Optionally handle error
+      }
     };
     fetchLeaderboard();
+    intervalId = setInterval(fetchLeaderboard, 300);
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
